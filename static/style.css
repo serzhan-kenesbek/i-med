@@ -40,28 +40,21 @@
   float: right;
 }
 
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-  }
-}
-
 div {
   font-family: "Roboto", sans-serif;
 }
 
 body {
   background: rgb(241, 241, 241);
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
 }
 
 div.container {
-  padding: 20px 10px 20px 10px
+  padding: 20px 10px 20px 10px;
 }
 
 .cv {
@@ -72,13 +65,15 @@ div.container {
   text-align: center;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 .column {
   float: left;
-  width: 33.3%;
+  width: 50%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -99,7 +94,8 @@ div.container {
   padding: 0 16px;
 }
 
-.container::after, .row::after {
+.container::after,
+.row::after {
   content: "";
   clear: both;
   display: table;
@@ -125,9 +121,25 @@ div.container {
   background-color: #555;
 }
 
+.logoimage {
+  height: 20px;
+  width: 20px;
+}
+
 @media screen and (max-width: 650px) {
   .column {
     width: 100%;
     display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
   }
 }
