@@ -10,6 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/chat-widget assets/css/style.css" />
+    <link rel="Tab icon" href="../static/img/pill_logo.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script src="../static/chat-widget assets/js/main.js"></script>
+    <script src="../static/chat-widget assets/js/chat.js"></script>
   </head>
   <body>
     <div class="header">
@@ -25,30 +33,187 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <form class="buttons" method="post" action="{{ url_for('tasks') }}">
-            <input type="submit" value="Stop/Start" name="stop" />
-            <input type="submit" value="Capture" name="click" />
-            <input type="submit" value="Grey" name="grey" />
-            <input type="submit" value="Negative" name="neg" />
-            <input type="submit" value="Face Only" name="face" />
-            <input type="submit" value="Start/Stop Recording" name="rec" />
-          </form>
           <img class="cv" src="{{ url_for('video_feed') }}" height="80%" />
-          <h3>Guide:</h3>
-          <ol>
-            <li>Stop/Start Toggle between stop or start live streaming</li>
-            <li>Capture Take still-shot and save in the 'shots' directory</li>
-            <li>Grey Toggle between grayscale and RGB output</li>
-            <li>Negative Toggle between negative and RGB output</li>
-            <li>Face Only Shows just your face if present(Toggle on/off)</li>
-            <li>
-              Start/Stop Recording Toggle between starting and stopping video
-              recording
-            </li>
-          </ol>
+          <form class="buttons" method="post" action="{{ url_for('tasks') }}">
+            <input id="b1" class="cb" type="submit" value="Start" name="stop" />
+            <input
+              id="b2"
+              class="cb"
+              type="submit"
+              value="Capture"
+              name="click"
+            />
+            <input id="b3" class="cb" type="submit" value="Grey" name="grey" />
+            <input
+              id="b4"
+              class="cb"
+              type="submit"
+              value="Negative"
+              name="neg"
+            />
+            <input
+              id="b5"
+              class="cb"
+              type="submit"
+              value="Face Only"
+              name="face"
+            />
+            <input
+              id="b6"
+              class="cb"
+              type="submit"
+              value="Start Recording"
+              name="rec"
+            />
+          </form>
+          <div class="guide">
+            <div class="container">
+              <h1 class="center">Guide</h1>
+
+              <article class="episode">
+                <div class="episode__number">00</div>
+                <div class="episode__content">
+                  <div class="title">Start button</div>
+                  <div class="story">
+                    <p>Toggle between stop or start live streaming</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="episode">
+                <div class="episode__number">01</div>
+                <div class="episode__content">
+                  <div class="title">Capture button</div>
+                  <div class="story">
+                    <p>Takes still-shot</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="episode">
+                <div class="episode__number">02</div>
+                <div class="episode__content">
+                  <div class="title">Grey</div>
+                  <div class="story">
+                    <p>Toggle between greyscale and RGB output</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="episode">
+                <div class="episode__number">03</div>
+                <div class="episode__content">
+                  <div class="title">Negative</div>
+                  <div class="story">
+                    <p>Toggle between negative and RGB output</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="episode">
+                <div class="episode__number">04</div>
+                <div class="episode__content">
+                  <div class="title">Face Only</div>
+                  <div class="story">
+                    <p>Shows only the persons face if present</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="episode">
+                <div class="episode__number">05</div>
+                <div class="episode__content">
+                  <div class="title">Start Recording</div>
+                  <div class="story">
+                    <p>Toggle between starting and stopping video recording</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup chat window -->
+
+    <!-- chat open -->
+    <div class="chat-bar-open" id="chat-open">
+      <button
+        id="chat-open-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatOpen()"
+      >
+        <img src="../static/img/pill_logo.png" alt="pill_logo image" />
+      </button>
+    </div>
+
+    <!-- chat close -->
+    <div class="chat-bar-close" id="chat-close">
+      <button
+        id="chat-close-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatClose()"
+      >
+        <i class="material-icons-outlined"> close </i>
+      </button>
+    </div>
+
+    <!-- chat-window 1 -->
+    <div class="chat-window" id="chat-window1">
+      <div class="hi-there">
+        <p class="p1">i-Med Virtual Assistant</p>
+        <br />
+        <p class="p2">Assistant used to help users</p>
+      </div>
+      <div class="start-conversation">
+        <h1>Ask a question</h1>
+        <br />
+        <p>The assistant replies in a few seconds.</p>
+        <button
+          class="new-conversation"
+          type="button"
+          onclick="openConversation()"
+        >
+          <span>Message</span><i class="material-icons-outlined"> send </i>
+        </button>
+      </div>
+    </div>
+
+    <!-- chat chat-window 2 -->
+    <div class="chat-window2" id="chat-window2">
+      <div class="message-box" id="messageBox">
+        <div class="hi-there">
+          <p class="p1">i-Med Virtual Assistant</p>
+          <br />
+          <p class="p2">The assistant replies in a few seconds.</p>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="surveysparrow">
+          <img src="../static/img/pill_logo.png" />
+          <p>i-Med Virtual Assistant</p>
+        </div>
+        <div class="write-reply">
+          <input
+            class="inputText"
+            type="text"
+            id="textInput"
+            placeholder="Write a reply..."
+          />
+        </div>
+        <div class="send-button">
+          <button
+            type="submit"
+            class="send-message"
+            id="send"
+            onclick="userResponse()"
+          >
+            <i class="material-icons-outlined"> send </i>
+          </button>
         </div>
       </div>
     </div>
   </body>
-  <footer></footer>
 </html>

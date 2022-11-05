@@ -10,6 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/chat-widget assets/css/style.css" />
+    <link rel="Tab icon" href="../static/img/pill_logo.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script src="../static/chat-widget assets/js/main.js"></script>
+    <script src="../static/chat-widget assets/js/chat.js"></script>
   </head>
   <body>
     <div class="header">
@@ -24,7 +32,99 @@
     </div>
     <div class="about-section">
       <h1>Pharmacies Near You</h1>
-      <p></p>
+    </div>
+    <p style="text-align: center">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38269.15636781192!2d8.59410615128591!3d53.16722813435651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b12ca90ab9d0f1%3A0x1fec79cb61c2a4ea!2sKronen%20Apotheke!5e0!3m2!1sen!2sde!4v1667667253995!5m2!1sen!2sde"
+        width="600"
+        height="600"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </p>
+    <!-- Popup chat window -->
+
+    <!-- chat open -->
+    <div class="chat-bar-open" id="chat-open">
+      <button
+        id="chat-open-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatOpen()"
+      >
+        <img src="../static/img/pill_logo.png" alt="pill_logo image" />
+      </button>
+    </div>
+
+    <!-- chat close -->
+    <div class="chat-bar-close" id="chat-close">
+      <button
+        id="chat-close-button"
+        type="button"
+        class="collapsible close"
+        onclick="chatClose()"
+      >
+        <i class="material-icons-outlined"> close </i>
+      </button>
+    </div>
+
+    <!-- chat-window 1 -->
+    <div class="chat-window" id="chat-window1">
+      <div class="hi-there">
+        <p class="p1">i-Med Virtual Assistant</p>
+        <br />
+        <p class="p2">Assistant used to help users</p>
+      </div>
+      <div class="start-conversation">
+        <h1>Ask a question</h1>
+        <br />
+        <p>The assistant replies in a few seconds.</p>
+        <button
+          class="new-conversation"
+          type="button"
+          onclick="openConversation()"
+        >
+          <span>Message</span><i class="material-icons-outlined"> send </i>
+        </button>
+      </div>
+    </div>
+
+    <!-- chat chat-window 2 -->
+    <div class="chat-window2" id="chat-window2">
+      <div class="message-box" id="messageBox">
+        <div class="hi-there">
+          <p class="p1">i-Med Virtual Assistant</p>
+          <br />
+          <p class="p2">The assistant replies in a few seconds.</p>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="surveysparrow">
+          <img src="../static/img/pill_logo.png" />
+          <p>i-Med Virtual Assistant</p>
+        </div>
+        <div class="write-reply">
+          <input
+            class="inputText"
+            type="text"
+            id="textInput"
+            placeholder="Write a reply..."
+          />
+        </div>
+        <div class="send-button">
+          <button
+            type="submit"
+            class="send-message"
+            id="send"
+            onclick="userResponse()"
+          >
+            <i class="material-icons-outlined"> send </i>
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

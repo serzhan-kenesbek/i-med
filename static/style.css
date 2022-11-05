@@ -31,7 +31,7 @@
 
 /* Style the active/current link*/
 .header a.active {
-  background-color: dodgerblue;
+  background-color: rgb(74, 160, 77);
   color: white;
 }
 
@@ -58,7 +58,9 @@ div.container {
 }
 
 .cv {
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .buttons {
@@ -105,19 +107,42 @@ div.container {
   color: grey;
 }
 
-.button {
+.cb {
   border: none;
   outline: 0;
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
+  width: 16%;
 }
 
-.button:hover {
+#b1 {
+  background-color: rgb(154, 205, 154);
+}
+
+#b2 {
+  background-color: rgb(109, 180, 109);
+}
+
+#b3 {
+  background-color: rgb(71, 155, 75);
+}
+
+#b4 {
+  background-color: rgb(59, 145, 62);
+}
+
+#b5 {
+  background-color: rgb(35, 107, 38);
+}
+
+#b6 {
+  background-color: rgb(15, 84, 17);
+}
+
+.cb:hover {
   background-color: #555;
 }
 
@@ -126,10 +151,74 @@ div.container {
   width: 20px;
 }
 
+.guide {
+  background: rgb(74, 160, 77);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  margin: 50px;
+}
+
+.center {
+  text-align: center;
+}
+
+.episode {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  position: relative;
+}
+
+.episode__number {
+  font-size: 8vw;
+  font-weight: 600;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  height: calc(10vw + 50px);
+  transition: all 0.2s ease-in;
+}
+
+.episode__content {
+  border-top: 2px solid #f1f1f1;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 10px;
+  padding: 15px 0;
+}
+
+.episode__content .title {
+  font-weight: 600;
+}
+
+.episode__content .story {
+  line-height: 26px;
+}
+
+div.title {
+  color: #f1f1f1;
+}
+
 @media screen and (max-width: 650px) {
   .column {
     width: 100%;
     display: block;
+  }
+  iframe {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .episode__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .episode__content .story {
+    font-size: 15px;
   }
 }
 
