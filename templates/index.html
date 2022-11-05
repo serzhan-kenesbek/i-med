@@ -34,6 +34,7 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <img class="cv" src="{{ url_for('video_feed') }}" height="80%" />
+          <br />
           <form class="buttons" method="post" action="{{ url_for('tasks') }}">
             <input id="b1" class="cb" type="submit" value="Start" name="stop" />
             <input
@@ -62,10 +63,11 @@
               id="b6"
               class="cb"
               type="submit"
-              value="Start Recording"
+              value="Record"
               name="rec"
             />
           </form>
+          <br>
           <div class="guide">
             <div class="container">
               <h1 class="center">Guide</h1>
@@ -123,7 +125,7 @@
               <article class="episode">
                 <div class="episode__number">05</div>
                 <div class="episode__content">
-                  <div class="title">Start Recording</div>
+                  <div class="title">Record</div>
                   <div class="story">
                     <p>Toggle between starting and stopping video recording</p>
                   </div>

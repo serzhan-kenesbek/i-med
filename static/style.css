@@ -64,7 +64,8 @@ div.container {
 }
 
 .buttons {
-  text-align: center;
+  width: 70%;
+  margin: auto;
 }
 
 *,
@@ -154,8 +155,10 @@ div.container {
 .guide {
   background: rgb(74, 160, 77);
   color: #fff;
-  font-family: "Poppins", sans-serif;
-  margin: 50px;
+  font-family: "Roboto", sans-serif;
+  margin: auto;
+  width: 65%;
+  border: 3px solid green;
 }
 
 .center {
@@ -169,13 +172,13 @@ div.container {
 }
 
 .episode__number {
-  font-size: 8vw;
+  font-size: 6vw;
   font-weight: 600;
-  padding: 10px 0;
+  padding: 2px 0;
   position: sticky;
   top: 0;
   text-align: center;
-  height: calc(10vw + 50px);
+  height: 9vw;
   transition: all 0.2s ease-in;
 }
 
