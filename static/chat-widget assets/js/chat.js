@@ -26,10 +26,12 @@ function openConversation() {
   audio1.play();
 }
 
+let userText;
+
 //Gets the text from the input box(user)
 function userResponse() {
   console.log("response");
-  let userText = document.getElementById("textInput").value;
+  userText = document.getElementById("textInput").value;
 
   if (userText == "") {
     alert("Please type something!");
@@ -57,20 +59,18 @@ function userResponse() {
 //admin Respononse to user's message
 function adminResponse() {
 
-
-  fetch("https://api.adviceslip.com/advice")
-    .then((response) => {
-      return response.json();
-    })
-    .then((adviceData) => {
-      let Adviceobj = adviceData.slip;
+  fetch("../static/chat-widget assets/drugdata.json")
+    .then(response => response.json()) // the .json() method parses the JSON response into a JS object literal
+    .then(json => {
+      //let json = require('/Users/beket/Documents/JACOBS/JacobsHack 2022/i-med/static/chat-widget assets/drugdata.json');
+      let desc = json[userText];
       document.getElementById(
         "messageBox"
       ).innerHTML += `<div class="second-chat">
-          <div class="circle" id="circle-mar"></div>
-          <p>${Adviceobj.advice}</p>
-          <div class="arrow"></div>
-        </div>`;
+            <div class="circle" id="circle-mar"></div>
+            <p>${desc}</p>
+            <div class="arrow"></div>
+         </div>`;
       let audio3 = new Audio(
         "https://downloadwap.com/content2/mp3-ringtones/tone/2020/alert/preview/56de9c2d5169679.mp3"
       );
@@ -80,9 +80,6 @@ function adminResponse() {
       var objDiv = document.getElementById("messageBox");
       objDiv.scrollTop = objDiv.scrollHeight;
     })
-    .catch((error) => {
-      console.log(error);
-    });
 }
 
 //press enter on keyboard and send message
