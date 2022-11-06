@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>i-Med</title>
+    <title>Medicine OCR</title>
     <link rel="stylesheet" href="../static/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='camera.js') }}"></script>
     <script src="../static/chat-widget assets/js/main.js"></script>
     <script src="../static/chat-widget assets/js/chat.js"></script>
   </head>
@@ -25,109 +27,48 @@
         >i-Med <img src="/static/img/pill_logo.png" height="20" width="20"
       /></a>
       <div class="header-right">
-        <a class="active" href="/">Home</a>
-        <a href="/medocr.html">Med OCR</a>
+        <a href="/">Home</a>
+        <a class="active" href="/medocr.html">Med OCR</a>
         <a href="/pharmacies.html">Pharmacies</a>
         <a href="/about.html">About</a>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <img class="cv" src="{{ url_for('video_feed') }}" height="80%" />
-          <br />
-          <form class="buttons" method="post" action="{{ url_for('tasks') }}">
-            <input id="b1" class="cb" type="submit" value="Start" name="stop" />
-            <input
-              id="b2"
-              class="cb"
-              type="submit"
-              value="Capture"
-              name="click"
-            />
-            <input id="b3" class="cb" type="submit" value="Grey" name="grey" />
-            <input
-              id="b4"
-              class="cb"
-              type="submit"
-              value="Negative"
-              name="neg"
-            />
-            <input
-              id="b5"
-              class="cb"
-              type="submit"
-              value="Face Only"
-              name="face"
-            />
-            <input id="b6" class="cb" type="submit" value="Record" name="rec" />
-          </form>
-          <br />
-          <div class="guide">
-            <div class="container">
-              <h1 class="center">Guide</h1>
-
-              <article class="episode">
-                <div class="episode__number">00</div>
-                <div class="episode__content">
-                  <div class="title">Start button</div>
-                  <div class="story">
-                    <p>Toggle between stop or start live streaming</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="episode">
-                <div class="episode__number">01</div>
-                <div class="episode__content">
-                  <div class="title">Capture button</div>
-                  <div class="story">
-                    <p>Takes still-shot</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="episode">
-                <div class="episode__number">02</div>
-                <div class="episode__content">
-                  <div class="title">Grey</div>
-                  <div class="story">
-                    <p>Toggle between greyscale and RGB output</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="episode">
-                <div class="episode__number">03</div>
-                <div class="episode__content">
-                  <div class="title">Negative</div>
-                  <div class="story">
-                    <p>Toggle between negative and RGB output</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="episode">
-                <div class="episode__number">04</div>
-                <div class="episode__content">
-                  <div class="title">Face Only</div>
-                  <div class="story">
-                    <p>Shows only the persons face if present</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="episode">
-                <div class="episode__number">05</div>
-                <div class="episode__content">
-                  <div class="title">Record</div>
-                  <div class="story">
-                    <p>Toggle between starting and stopping video recording</p>
-                  </div>
-                </div>
-              </article>
-            </div>
+    <div class="about-section">
+      <h1>Medicine Recognition</h1>
+      <p>Camera for recognizing text on the medicine</p>
+    </div>
+    <br />
+    <div class="container container2">
+      <div class="content">        
+          <div id="disp-area">
+              <p>Capture your image which includes some text.</p>
+              <div>
+                  <video id="player" autoplay></video>
+              </div>
+              <div>
+                  <button id="cap" class="btn large success pad" onclick="clickCapture()">Capture</button>
+              </div>           
           </div>
+          <div id="disp-area2">
+              <div class="inner-container">              
+                  <div>
+                      <div><img src="" alt="Snapshot" id="snapshot" class="pad"></div>                        
+                  </div>
+                  <h5>Detected text</h5>
+                  <div id="result">
+                      <label for="result-list">Text ( Confidence )</label>
+                      <select name="products" id="result-list" size=5 disabled></select>
+                  </div>
+                  <div class="pad">
+                      <p><b>NOTE : </b><i>Confidence</i> means how much likely the object detected in the image is TEXT, 
+                          not the accuracy of the word.</p>
+                  </div>
+                  <button id="camback" class="btn large info" style="float:right;" onclick=loadCamera()>Back to Camera</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
     <!-- Popup chat window -->
 
     <!-- chat open -->
