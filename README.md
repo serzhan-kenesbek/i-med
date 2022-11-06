@@ -20,3 +20,8 @@ i-Med: A medical portal for the general audience. This is a website. Computer Vi
 * Chat widget to support customers
 * Show nearby pharmacies based on your location
 * Responsive UI
+
+## Credits
+* Muslim Bayemirov
+* Assylbek Sakenov
+* Timur Muzhikbayev
