@@ -1,7 +1,7 @@
 # i-Med
 
 ## About the project
-i-Med: A medical portal for the general audience. This is a website. Computer Vision was integrated into the website using flask.
+A medical portal for the general audience. Computer Vision was integrated into the website using the Python framework Flask and library OpenCV.
 
 ### Built with
 * HTML
